@@ -345,14 +345,21 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// S["randomise"]	>>  randomise
 
 	//Do a little surgical loading here to respect the stuff in apply_character_randomization_prefs
-	var/list/randomise_list = S["randomise"]
 
-	if(RANDOM_BODY_ANTAG in randomise_list)
-		randomise[RANDOM_BODY_ANTAG] = randomise_list[RANDOM_BODY_ANTAG]
-	if(RANDOM_GENDER_ANTAG in randomise_list)
-		randomise[RANDOM_GENDER_ANTAG] = randomise_list[RANDOM_GENDER_ANTAG]
-	if(RANDOM_NAME_ANTAG in randomise_list)
-		randomise[RANDOM_NAME_ANTAG] = randomise_list[RANDOM_NAME_ANTAG]
+	S["randomise"] >> randomise
+	// We load our list, but override everything to FALSE to stop a "tainted" save from making it random again.
+	randomise[RANDOM_BODY] = FALSE
+	randomise[RANDOM_BODY_ANTAG] = FALSE
+	randomise[RANDOM_UNDERWEAR] = FALSE
+	randomise[RANDOM_UNDERWEAR_COLOR] = FALSE
+	randomise[RANDOM_UNDERSHIRT] = FALSE
+	randomise[RANDOM_SOCKS] = FALSE
+	randomise[RANDOM_HAIRSTYLE] = FALSE
+	randomise[RANDOM_HAIR_COLOR] = FALSE
+	randomise[RANDOM_FACIAL_HAIRSTYLE] = FALSE
+	randomise[RANDOM_FACIAL_HAIR_COLOR] = FALSE
+	randomise[RANDOM_SKIN_TONE] = FALSE
+	randomise[RANDOM_EYE_COLOR] = FALSE
 
 	S["family"]			>> family
 	S["setspouse"]			>> setspouse

@@ -90,12 +90,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/static/datum/patron/default_patron = /datum/patron/divine/astrata
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/list/randomise = list(
-		(RANDOM_BODY) = TRUE,
+		(RANDOM_BODY) = FALSE,
 		(RANDOM_BODY_ANTAG) = FALSE,
-		(RANDOM_UNDERWEAR) = TRUE,
-		(RANDOM_UNDERWEAR_COLOR) = TRUE,
-		(RANDOM_UNDERSHIRT) = TRUE,
-		(RANDOM_SOCKS) = TRUE,
+		(RANDOM_UNDERWEAR) = FALSE,
+		(RANDOM_UNDERWEAR_COLOR) = FALSE,
+		(RANDOM_UNDERSHIRT) = FALSE,
+		(RANDOM_SOCKS) = FALSE,
 		(RANDOM_HAIRSTYLE) = FALSE,
 		(RANDOM_HAIR_COLOR) = FALSE,
 		(RANDOM_FACIAL_HAIRSTYLE) = FALSE,
