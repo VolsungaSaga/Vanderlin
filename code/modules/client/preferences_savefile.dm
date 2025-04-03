@@ -336,16 +336,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["accessory"]			>> accessory
 	S["detail"]			>> detail
 	S["socks"]				>> socks
-
-	// Commented out this one because there's no way to really change this
-	// from a user-facing interface.
-	// You could do a funky work-around without commenting this out if you save the character and then re-load them,
-	// but this feature isn't implemented, so I think it's better like this.
-
-	// S["randomise"]	>>  randomise
-
-	//Do a little surgical loading here to respect the stuff in apply_character_randomization_prefs
-
 	S["randomise"] >> randomise
 	// We load our list, but override everything to FALSE to stop a "tainted" save from making it random again.
 	randomise[RANDOM_BODY] = FALSE
