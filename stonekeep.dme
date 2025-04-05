@@ -1066,6 +1066,7 @@
 #include "code\game\objects\items\magic.dm"
 #include "code\game\objects\items\natural.dm"
 #include "code\game\objects\items\needle.dm"
+#include "code\game\objects\items\ointment.dm"
 #include "code\game\objects\items\ore.dm"
 #include "code\game\objects\items\painting.dm"
 #include "code\game\objects\items\perfume.dm"
