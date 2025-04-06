@@ -39,9 +39,12 @@
 		actual_delay -= (human_user.mind.get_skill_level(/datum/skill/misc/medicine) * 10) //Copied from clothfibersthorn.dm
 
 	//Play sound here
+	playsound(src, 'sound/surgery/organ1.ogg', 100, FALSE)
 	if(!do_after(user, actual_delay, M))
 		return
 	//Play sound here
+	playsound(src, 'sound/surgery/organ1.ogg', 100, FALSE)
+
 
 	//Update charges, limb damage values.
 	affecting.heal_damage(0, burn_dam_healed, BODYPART_ORGANIC)
