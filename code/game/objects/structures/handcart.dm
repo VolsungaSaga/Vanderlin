@@ -115,8 +115,9 @@
 		// Then, everything else.
 		else
 			for(var/obj/item/I in T)
-				put_in(I)
-				fou = TRUE
+				//Only play the sound if success.
+				if(put_in(I))
+					fou = TRUE
 		if(fou)
 			playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
 
