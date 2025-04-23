@@ -161,10 +161,6 @@
 /obj/structure/handcart/proc/put_in_wood(turf/user_turf)
 	return filtered_put(user_turf, list(/obj/item/grown/log/tree))
 
-//Small gems.
-/obj/structure/handcart/proc/put_in_gems(turf/user_turf)
-	return filtered_put(user_turf, list(/obj/item/gem))
-
 /obj/structure/handcart/proc/put_in(atom/movable/O, mob/user)
 	if(!insertion_allowed(O))
 		return
