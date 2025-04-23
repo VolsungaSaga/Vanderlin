@@ -105,11 +105,62 @@
 	if(isturf(T))
 		user.changeNext_move(CLICK_CD_MELEE)
 		var/fou
-		for(var/obj/item/I in T)
-			put_in(I)
+
+		//First, we do ores.
+		if(put_in_ores(T))
 			fou = TRUE
+		//Then, we try wood
+		else if(put_in_wood(T))
+			fou = TRUE
+		// Then, everything else.
+		else
+			for(var/obj/item/I in T)
+				put_in(I)
+				fou = TRUE
 		if(fou)
 			playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
+
+
+/**
+ * @brief This allows you to sieve through objects on a given turf and insert
+ * them into the cart if they match the given type.
+ *
+ * @param user_turf: The turf of the mob that clicked on this cart.
+ * @param type: Must be a type path, or else this will do nothing.
+ *
+ * @return bool: Whether this proc has inserted at least one item.
+ */
+/obj/structure/handcart/proc/filtered_put(turf/user_turf, type)
+	//Check if the type parameter is any good.
+	if(!ispath(type))
+		return
+
+	//Turf check should be handled by caller.
+
+	var/have_inserted = FALSE
+
+	//Nothing especially fancy here. We just check for the type to match
+	// before letting the object be "put in".
+	for(var/obj/item/I in user_turf)
+		if(istype(I, type))
+			put_in(I)
+			have_inserted = TRUE
+	if(have_inserted)
+		playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
+
+	return have_inserted
+
+//Handles any object that's an ore
+/obj/structure/handcart/proc/put_in_ores(turf/user_turf)
+	return filtered_put(user_turf, /obj/item/ore)
+
+//Handles logs (big, small), sticks. Big logs may run afoul of the cart's weight limits.
+/obj/structure/handcart/proc/put_in_wood(turf/user_turf)
+	return filtered_put(user_turf, /obj/item/grown/log/tree)
+
+//Small gems.
+/obj/structure/handcart/proc/put_in_gems(turf/user_turf)
+	return filtered_put(user_turf, /obj/item/gem)
 
 /obj/structure/handcart/proc/put_in(atom/movable/O, mob/user)
 	if(!insertion_allowed(O))
