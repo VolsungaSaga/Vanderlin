@@ -109,20 +109,19 @@
 		var/list/ore_list = sieve_ores_and_gems(user,T)
 		if(ore_list.len != 0)
 			for(var/obj/item/I in ore_list)
-				var/res = interruptable_put(user,I)
-				if(!res)
+				if(!interruptable_put(user,I))
 					return
 			return
 		var/list/wood_list = sieve_wood(user, T)
 		if(wood_list.len != 0)
 			for(var/obj/item/I in wood_list)
-				var/res = interruptable_put(user,I)
-				if(!res)
+				if(!interruptable_put(user,I))
 					return
 			return
 
 		for(var/obj/item/I in T)
-			interruptable_put(user, I)
+			if(!interruptable_put(user, I))
+				return
 
 /**
  * @brief This allows you to sieve through objects on a given turf and insert
